@@ -14,6 +14,33 @@
 		E9FA41371B2A91E4001AFFDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41361B2A91E4001AFFDD /* Images.xcassets */; };
 		E9FA413A1B2A91E4001AFFDD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41381B2A91E4001AFFDD /* LaunchScreen.xib */; };
 		E9FA41461B2A91E4001AFFDD /* FuncGenBLETests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41451B2A91E4001AFFDD /* FuncGenBLETests.m */; };
+		E9FA41601B2A9253001AFFDD /* BLEAdvertising.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41511B2A9253001AFFDD /* BLEAdvertising.m */; };
+		E9FA41611B2A9253001AFFDD /* BLEPeripheralAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41531B2A9253001AFFDD /* BLEPeripheralAccess.m */; };
+		E9FA41621B2A9253001AFFDD /* FGController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41561B2A9253001AFFDD /* FGController.m */; };
+		E9FA41631B2A9253001AFFDD /* FrequencySlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41591B2A9253001AFFDD /* FrequencySlideView.m */; };
+		E9FA41641B2A9253001AFFDD /* FrequencyTuneView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA415B1B2A9253001AFFDD /* FrequencyTuneView.m */; };
+		E9FA41651B2A9253001AFFDD /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA415F1B2A9253001AFFDD /* Utils.m */; };
+		E9FA41841B2A9268001AFFDD /* 007_00-sync.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41671B2A9268001AFFDD /* 007_00-sync.png */; };
+		E9FA41851B2A9268001AFFDD /* 008_00-wave_off.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41681B2A9268001AFFDD /* 008_00-wave_off.png */; };
+		E9FA41861B2A9268001AFFDD /* 008_00-wave_on.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41691B2A9268001AFFDD /* 008_00-wave_on.png */; };
+		E9FA41871B2A9268001AFFDD /* 009_00-link.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA416A1B2A9268001AFFDD /* 009_00-link.png */; };
+		E9FA41881B2A9268001AFFDD /* 009_01-ink.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA416B1B2A9268001AFFDD /* 009_01-ink.png */; };
+		E9FA41891B2A9268001AFFDD /* 1169.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA416C1B2A9268001AFFDD /* 1169.png */; };
+		E9FA418A1B2A9268001AFFDD /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA416D1B2A9268001AFFDD /* arrow_down.png */; };
+		E9FA418B1B2A9268001AFFDD /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA416E1B2A9268001AFFDD /* arrow_up.png */; };
+		E9FA418C1B2A9268001AFFDD /* icon_return.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA416F1B2A9268001AFFDD /* icon_return.png */; };
+		E9FA418D1B2A9268001AFFDD /* mbed-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41701B2A9268001AFFDD /* mbed-logo.png */; };
+		E9FA418E1B2A9268001AFFDD /* ohneta.net.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41711B2A9268001AFFDD /* ohneta.net.png */; };
+		E9FA418F1B2A9268001AFFDD /* sync_freq.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41721B2A9268001AFFDD /* sync_freq.png */; };
+		E9FA41901B2A9268001AFFDD /* wave_fre.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41741B2A9268001AFFDD /* wave_fre.png */; };
+		E9FA41911B2A9268001AFFDD /* wave_saw.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41751B2A9268001AFFDD /* wave_saw.png */; };
+		E9FA41921B2A9268001AFFDD /* wave_sin.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41761B2A9268001AFFDD /* wave_sin.png */; };
+		E9FA41931B2A9268001AFFDD /* wave_squ.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41771B2A9268001AFFDD /* wave_squ.png */; };
+		E9FA41941B2A9268001AFFDD /* wave_tri.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FA41781B2A9268001AFFDD /* wave_tri.png */; };
+		E9FA41951B2A9268001AFFDD /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA417A1B2A9268001AFFDD /* SettingViewController.m */; };
+		E9FA41971B2A9268001AFFDD /* WaveEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA417E1B2A9268001AFFDD /* WaveEditViewController.m */; };
+		E9FA41981B2A9268001AFFDD /* WaveFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41811B2A9268001AFFDD /* WaveFormView.m */; };
+		E9FA41991B2A9268001AFFDD /* WaveScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA41831B2A9268001AFFDD /* WaveScreenView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +67,44 @@
 		E9FA413F1B2A91E4001AFFDD /* FuncGenBLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FuncGenBLETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FA41441B2A91E4001AFFDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FA41451B2A91E4001AFFDD /* FuncGenBLETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FuncGenBLETests.m; sourceTree = "<group>"; };
+		E9FA41501B2A9253001AFFDD /* BLEAdvertising.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEAdvertising.h; sourceTree = "<group>"; };
+		E9FA41511B2A9253001AFFDD /* BLEAdvertising.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEAdvertising.m; sourceTree = "<group>"; };
+		E9FA41521B2A9253001AFFDD /* BLEPeripheralAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheralAccess.h; sourceTree = "<group>"; };
+		E9FA41531B2A9253001AFFDD /* BLEPeripheralAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheralAccess.m; sourceTree = "<group>"; };
+		E9FA41551B2A9253001AFFDD /* FGController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGController.h; sourceTree = "<group>"; };
+		E9FA41561B2A9253001AFFDD /* FGController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGController.m; sourceTree = "<group>"; };
+		E9FA41581B2A9253001AFFDD /* FrequencySlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequencySlideView.h; sourceTree = "<group>"; };
+		E9FA41591B2A9253001AFFDD /* FrequencySlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequencySlideView.m; sourceTree = "<group>"; };
+		E9FA415A1B2A9253001AFFDD /* FrequencyTuneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrequencyTuneView.h; sourceTree = "<group>"; };
+		E9FA415B1B2A9253001AFFDD /* FrequencyTuneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrequencyTuneView.m; sourceTree = "<group>"; };
+		E9FA415D1B2A9253001AFFDD /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		E9FA415E1B2A9253001AFFDD /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		E9FA415F1B2A9253001AFFDD /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E9FA41671B2A9268001AFFDD /* 007_00-sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "007_00-sync.png"; sourceTree = "<group>"; };
+		E9FA41681B2A9268001AFFDD /* 008_00-wave_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "008_00-wave_off.png"; sourceTree = "<group>"; };
+		E9FA41691B2A9268001AFFDD /* 008_00-wave_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "008_00-wave_on.png"; sourceTree = "<group>"; };
+		E9FA416A1B2A9268001AFFDD /* 009_00-link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "009_00-link.png"; sourceTree = "<group>"; };
+		E9FA416B1B2A9268001AFFDD /* 009_01-ink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "009_01-ink.png"; sourceTree = "<group>"; };
+		E9FA416C1B2A9268001AFFDD /* 1169.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1169.png; sourceTree = "<group>"; };
+		E9FA416D1B2A9268001AFFDD /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
+		E9FA416E1B2A9268001AFFDD /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
+		E9FA416F1B2A9268001AFFDD /* icon_return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_return.png; sourceTree = "<group>"; };
+		E9FA41701B2A9268001AFFDD /* mbed-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mbed-logo.png"; sourceTree = "<group>"; };
+		E9FA41711B2A9268001AFFDD /* ohneta.net.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ohneta.net.png; sourceTree = "<group>"; };
+		E9FA41721B2A9268001AFFDD /* sync_freq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync_freq.png; sourceTree = "<group>"; };
+		E9FA41741B2A9268001AFFDD /* wave_fre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave_fre.png; sourceTree = "<group>"; };
+		E9FA41751B2A9268001AFFDD /* wave_saw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave_saw.png; sourceTree = "<group>"; };
+		E9FA41761B2A9268001AFFDD /* wave_sin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave_sin.png; sourceTree = "<group>"; };
+		E9FA41771B2A9268001AFFDD /* wave_squ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave_squ.png; sourceTree = "<group>"; };
+		E9FA41781B2A9268001AFFDD /* wave_tri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave_tri.png; sourceTree = "<group>"; };
+		E9FA41791B2A9268001AFFDD /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = ../SettingViewController.h; sourceTree = "<group>"; };
+		E9FA417A1B2A9268001AFFDD /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = ../SettingViewController.m; sourceTree = "<group>"; };
+		E9FA417D1B2A9268001AFFDD /* WaveEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveEditViewController.h; path = ../WaveEditViewController.h; sourceTree = "<group>"; };
+		E9FA417E1B2A9268001AFFDD /* WaveEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaveEditViewController.m; path = ../WaveEditViewController.m; sourceTree = "<group>"; };
+		E9FA41801B2A9268001AFFDD /* WaveFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormView.h; sourceTree = "<group>"; };
+		E9FA41811B2A9268001AFFDD /* WaveFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormView.m; sourceTree = "<group>"; };
+		E9FA41821B2A9268001AFFDD /* WaveScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveScreenView.h; sourceTree = "<group>"; };
+		E9FA41831B2A9268001AFFDD /* WaveScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveScreenView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +150,16 @@
 				E9FA412E1B2A91E4001AFFDD /* AppDelegate.m */,
 				E9FA41301B2A91E4001AFFDD /* ViewController.h */,
 				E9FA41311B2A91E4001AFFDD /* ViewController.m */,
+				E9FA41791B2A9268001AFFDD /* SettingViewController.h */,
+				E9FA417A1B2A9268001AFFDD /* SettingViewController.m */,
+				E9FA417D1B2A9268001AFFDD /* WaveEditViewController.h */,
+				E9FA417E1B2A9268001AFFDD /* WaveEditViewController.m */,
+				E9FA417F1B2A9268001AFFDD /* WaveFromViews */,
+				E9FA41571B2A9253001AFFDD /* FrequencyTunes */,
+				E9FA41541B2A9253001AFFDD /* FGController */,
+				E9FA414F1B2A9253001AFFDD /* BLE */,
+				E9FA415C1B2A9253001AFFDD /* General */,
+				E9FA41661B2A9268001AFFDD /* materials */,
 				E9FA41331B2A91E4001AFFDD /* Main.storyboard */,
 				E9FA41361B2A91E4001AFFDD /* Images.xcassets */,
 				E9FA41381B2A91E4001AFFDD /* LaunchScreen.xib */,
@@ -117,6 +192,92 @@
 				E9FA41441B2A91E4001AFFDD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9FA414F1B2A9253001AFFDD /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA41501B2A9253001AFFDD /* BLEAdvertising.h */,
+				E9FA41511B2A9253001AFFDD /* BLEAdvertising.m */,
+				E9FA41521B2A9253001AFFDD /* BLEPeripheralAccess.h */,
+				E9FA41531B2A9253001AFFDD /* BLEPeripheralAccess.m */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		E9FA41541B2A9253001AFFDD /* FGController */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA41551B2A9253001AFFDD /* FGController.h */,
+				E9FA41561B2A9253001AFFDD /* FGController.m */,
+			);
+			path = FGController;
+			sourceTree = "<group>";
+		};
+		E9FA41571B2A9253001AFFDD /* FrequencyTunes */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA41581B2A9253001AFFDD /* FrequencySlideView.h */,
+				E9FA41591B2A9253001AFFDD /* FrequencySlideView.m */,
+				E9FA415A1B2A9253001AFFDD /* FrequencyTuneView.h */,
+				E9FA415B1B2A9253001AFFDD /* FrequencyTuneView.m */,
+			);
+			path = FrequencyTunes;
+			sourceTree = "<group>";
+		};
+		E9FA415C1B2A9253001AFFDD /* General */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA415D1B2A9253001AFFDD /* Defines.h */,
+				E9FA415E1B2A9253001AFFDD /* Utils.h */,
+				E9FA415F1B2A9253001AFFDD /* Utils.m */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		E9FA41661B2A9268001AFFDD /* materials */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA41671B2A9268001AFFDD /* 007_00-sync.png */,
+				E9FA41681B2A9268001AFFDD /* 008_00-wave_off.png */,
+				E9FA41691B2A9268001AFFDD /* 008_00-wave_on.png */,
+				E9FA416A1B2A9268001AFFDD /* 009_00-link.png */,
+				E9FA416B1B2A9268001AFFDD /* 009_01-ink.png */,
+				E9FA416C1B2A9268001AFFDD /* 1169.png */,
+				E9FA416D1B2A9268001AFFDD /* arrow_down.png */,
+				E9FA416E1B2A9268001AFFDD /* arrow_up.png */,
+				E9FA416F1B2A9268001AFFDD /* icon_return.png */,
+				E9FA41701B2A9268001AFFDD /* mbed-logo.png */,
+				E9FA41711B2A9268001AFFDD /* ohneta.net.png */,
+				E9FA41721B2A9268001AFFDD /* sync_freq.png */,
+				E9FA41731B2A9268001AFFDD /* waves */,
+			);
+			name = materials;
+			path = ../materials;
+			sourceTree = "<group>";
+		};
+		E9FA41731B2A9268001AFFDD /* waves */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA41741B2A9268001AFFDD /* wave_fre.png */,
+				E9FA41751B2A9268001AFFDD /* wave_saw.png */,
+				E9FA41761B2A9268001AFFDD /* wave_sin.png */,
+				E9FA41771B2A9268001AFFDD /* wave_squ.png */,
+				E9FA41781B2A9268001AFFDD /* wave_tri.png */,
+			);
+			path = waves;
+			sourceTree = "<group>";
+		};
+		E9FA417F1B2A9268001AFFDD /* WaveFromViews */ = {
+			isa = PBXGroup;
+			children = (
+				E9FA41801B2A9268001AFFDD /* WaveFormView.h */,
+				E9FA41811B2A9268001AFFDD /* WaveFormView.m */,
+				E9FA41821B2A9268001AFFDD /* WaveScreenView.h */,
+				E9FA41831B2A9268001AFFDD /* WaveScreenView.m */,
+			);
+			name = WaveFromViews;
+			path = ../WaveFromViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +360,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FA41891B2A9268001AFFDD /* 1169.png in Resources */,
+				E9FA418D1B2A9268001AFFDD /* mbed-logo.png in Resources */,
+				E9FA41871B2A9268001AFFDD /* 009_00-link.png in Resources */,
+				E9FA418B1B2A9268001AFFDD /* arrow_up.png in Resources */,
+				E9FA41931B2A9268001AFFDD /* wave_squ.png in Resources */,
+				E9FA41881B2A9268001AFFDD /* 009_01-ink.png in Resources */,
+				E9FA41911B2A9268001AFFDD /* wave_saw.png in Resources */,
+				E9FA418A1B2A9268001AFFDD /* arrow_down.png in Resources */,
+				E9FA41941B2A9268001AFFDD /* wave_tri.png in Resources */,
+				E9FA41861B2A9268001AFFDD /* 008_00-wave_on.png in Resources */,
+				E9FA418C1B2A9268001AFFDD /* icon_return.png in Resources */,
 				E9FA41351B2A91E4001AFFDD /* Main.storyboard in Resources */,
+				E9FA418E1B2A9268001AFFDD /* ohneta.net.png in Resources */,
+				E9FA41921B2A9268001AFFDD /* wave_sin.png in Resources */,
 				E9FA413A1B2A91E4001AFFDD /* LaunchScreen.xib in Resources */,
+				E9FA418F1B2A9268001AFFDD /* sync_freq.png in Resources */,
+				E9FA41841B2A9268001AFFDD /* 007_00-sync.png in Resources */,
 				E9FA41371B2A91E4001AFFDD /* Images.xcassets in Resources */,
+				E9FA41901B2A9268001AFFDD /* wave_fre.png in Resources */,
+				E9FA41851B2A9268001AFFDD /* 008_00-wave_off.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +397,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FA41651B2A9253001AFFDD /* Utils.m in Sources */,
 				E9FA41321B2A91E4001AFFDD /* ViewController.m in Sources */,
+				E9FA41631B2A9253001AFFDD /* FrequencySlideView.m in Sources */,
+				E9FA41971B2A9268001AFFDD /* WaveEditViewController.m in Sources */,
+				E9FA41981B2A9268001AFFDD /* WaveFormView.m in Sources */,
 				E9FA412F1B2A91E4001AFFDD /* AppDelegate.m in Sources */,
+				E9FA41601B2A9253001AFFDD /* BLEAdvertising.m in Sources */,
 				E9FA412C1B2A91E4001AFFDD /* main.m in Sources */,
+				E9FA41621B2A9253001AFFDD /* FGController.m in Sources */,
+				E9FA41611B2A9253001AFFDD /* BLEPeripheralAccess.m in Sources */,
+				E9FA41991B2A9268001AFFDD /* WaveScreenView.m in Sources */,
+				E9FA41641B2A9253001AFFDD /* FrequencyTuneView.m in Sources */,
+				E9FA41951B2A9268001AFFDD /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -336,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -350,6 +538,7 @@
 				INFOPLIST_FILE = FuncGenBLE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -360,6 +549,7 @@
 				INFOPLIST_FILE = FuncGenBLE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

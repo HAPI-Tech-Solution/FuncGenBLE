@@ -1,25 +1,425 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Function Generator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjf-Dd-f2T">
+                                <rect key="frame" x="4" y="0.0" width="179" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="for mbed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRl-yU-D0a">
+                                <rect key="frame" x="162" y="1" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dox-av-0dB">
+                                <rect key="frame" x="24" y="38" width="113" height="30"/>
+                                <state key="normal" title="wave form">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HgO-TQ-tzM" kind="modal" modalTransitionStyle="crossDissolve" id="JTh-3n-BM7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDl-41-0B3">
+                                <rect key="frame" x="10" y="114" width="119" height="30"/>
+                                <state key="normal" title="about">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="agQ-w0-rsJ" kind="presentation" modalTransitionStyle="flipHorizontal" id="m8m-pK-XIM"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wave_sin.png" translatesAutoresizingMaskIntoConstraints="NO" id="jGj-RN-e1J">
+                                <rect key="frame" x="400" y="38" width="152" height="76"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ohneta.net.png" translatesAutoresizingMaskIntoConstraints="NO" id="c7h-cU-uAx">
+                                <rect key="frame" x="390" y="114" width="79" height="51"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mbed-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Wd-yQ-lMe">
+                                <rect key="frame" x="483" y="128" width="75" height="24"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMy-uv-b8d">
+                                <rect key="frame" x="10" y="76" width="119" height="30"/>
+                                <state key="normal" title="setting">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hP3-9B-PVP" kind="modal" modalTransitionStyle="flipHorizontal" id="xtT-19-SSf"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="987" y="-57"/>
+        </scene>
+        <!--SettingViewController-->
+        <scene sceneID="ICG-zr-UwQ">
+            <objects>
+                <viewController title="SettingViewController" id="hP3-9B-PVP" customClass="SettingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YYG-NY-JWH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lqm-EH-OAx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SIA-T0-7DE">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Function Generator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwA-FP-edP">
+                                <rect key="frame" x="7" y="0.0" width="179" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="for mbed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VqA-FK-Vrk">
+                                <rect key="frame" x="170" y="0.0" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yts-i2-k1J">
+                                <rect key="frame" x="1" y="288" width="32" height="32"/>
+                                <state key="normal" title="return" image="icon_return.png"/>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" modalTransitionStyle="flipHorizontal" id="ycF-UE-4YB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xId-da-KHd">
+                                <rect key="frame" x="75" y="78" width="123" height="164"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2we-qn-vr5">
+                                        <rect key="frame" x="8" y="2" width="40" height="160"/>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFZ-Ka-6DH">
+                                        <rect key="frame" x="48" y="77" width="5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3y-No-TC3">
+                                        <rect key="frame" x="99" y="77" width="35" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frequency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAW-yG-yol">
+                                        <rect key="frame" x="26" y="3" width="70" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eip-Ky-RXA">
+                                        <rect key="frame" x="104" y="144" width="16" height="16"/>
+                                        <state key="normal" title="return" image="icon_return.png"/>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gy-6U-qq6">
+                                        <rect key="frame" x="56" y="2" width="40" height="160"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="hzFreqPickerView" destination="9gy-6U-qq6" id="sK5-ef-jh4"/>
+                        <outlet property="khzFreqPickerView" destination="2we-qn-vr5" id="ohm-kN-WkN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkY-FW-KGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="395"/>
+        </scene>
+        <!--WaveEditViewController-->
+        <scene sceneID="03c-C0-lur">
+            <objects>
+                <viewController title="WaveEditViewController" id="HgO-TQ-tzM" customClass="WaveEditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u4e-iL-ugS"/>
+                        <viewControllerLayoutGuide type="bottom" id="tqy-Nu-WCP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XAz-PT-Tzc">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Function Generator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-lf-Nxh">
+                                <rect key="frame" x="4" y="0.0" width="179" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="for mbed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1R-7r-ocA">
+                                <rect key="frame" x="162" y="1" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZu-CO-7ac">
+                                <rect key="frame" x="1" y="288" width="32" height="32"/>
+                                <state key="normal" title="return" image="icon_return.png"/>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" modalTransitionStyle="crossDissolve" id="2da-Xl-qLY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbJ-ea-hr8" userLabel="WaveSineButton">
+                                <rect key="frame" x="17" y="28" width="90" height="50"/>
+                                <state key="normal" title="Button" image="wave_sin.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sineWaveButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="Qtc-bO-brz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx0-2i-7TD" userLabel="WaveSquButton">
+                                <rect key="frame" x="17" y="79" width="90" height="50"/>
+                                <state key="normal" title="Button" image="wave_squ.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="squareButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="5M2-sf-3gl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZF-SD-Arn" userLabel="WaveTraiangleButton">
+                                <rect key="frame" x="17" y="131" width="90" height="50"/>
+                                <state key="normal" title="Button" image="wave_tri.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="triangeButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="wcF-T1-dXh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdE-qm-wm0" userLabel="WaveSawButton">
+                                <rect key="frame" x="17" y="186" width="90" height="50"/>
+                                <state key="normal" title="Button" image="wave_saw.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sawtoothButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="xQM-Dn-HmS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDJ-8c-jGl" userLabel="WaveFreehandButton">
+                                <rect key="frame" x="17" y="238" width="90" height="50"/>
+                                <state key="normal" title="Button" image="wave_fre.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="freehandButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="oFJ-ch-8jB"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pza-Md-hBX" userLabel="WaveformView">
+                                <rect key="frame" x="115" y="28" width="380" height="240"/>
+                                <color key="backgroundColor" red="0.043220621899999999" green="0.91388971990000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26x-tm-B7m">
+                                <rect key="frame" x="400" y="2" width="80" height="22"/>
+                                <color key="backgroundColor" red="0.0" green="0.20909947209999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0123456" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPy-rf-IWd">
+                                <rect key="frame" x="124" y="280" width="78" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjT-CD-dSZ">
+                                <rect key="frame" x="205" y="283" width="21" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9H-de-hvA" userLabel="FrequencyUpButton">
+                                <rect key="frame" x="234" y="276" width="30" height="30"/>
+                                <state key="normal" title="Button" image="arrow_down.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="frequencyDownButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="CNV-38-Uo8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQv-sK-cvL" userLabel="FrequencyDownButton">
+                                <rect key="frame" x="272" y="274" width="30" height="30"/>
+                                <state key="normal" title="Button" image="arrow_up.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="frequencyUpButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="JSp-8T-IhZ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfn-9m-oWk" userLabel="FunGenControlView">
+                                <rect key="frame" x="498" y="28" width="58" height="278"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZK-1q-LhO">
+                                        <rect key="frame" x="4" y="4" width="48" height="270"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oi-do-kjG">
+                                                <rect key="frame" x="4" y="4" width="40" height="40"/>
+                                                <state key="normal" title="connect" image="009_00-link.png"/>
+                                                <connections>
+                                                    <action selector="outputButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="vhe-eP-Cqc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLF-PO-tGp">
+                                                <rect key="frame" x="4" y="56" width="40" height="22"/>
+                                                <color key="backgroundColor" red="0.12650242789999999" green="0.37485333840000001" blue="0.91648910979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="008_00-wave_off.png"/>
+                                                <connections>
+                                                    <action selector="outputButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="egX-Ve-n6y"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Spz-iK-Rvh">
+                                                <rect key="frame" x="4" y="228" width="40" height="40"/>
+                                                <color key="backgroundColor" red="0.12650242794432623" green="0.37485333842669166" blue="0.91648910984848486" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="send" image="007_00-sync.png"/>
+                                                <connections>
+                                                    <action selector="sendButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="Red-4g-A0Q"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.27022964338848249" green="0.89094065656565657" blue="0.4844525327816111" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15887514480050932" green="0.4689283769311684" blue="0.77298374368686873" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQ1-ep-T1q" userLabel="FrequanceAreaButton">
+                                <rect key="frame" x="115" y="270" width="102" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="frequencyTapButtonHandle:" destination="HgO-TQ-tzM" eventType="touchUpInside" id="8ac-yJ-o8h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="frequencyDownButton" destination="L9H-de-hvA" id="cFP-E5-MTR"/>
+                        <outlet property="frequencyLabel" destination="JPy-rf-IWd" id="AWJ-dH-LMb"/>
+                        <outlet property="frequencyUpButton" destination="TQv-sK-cvL" id="f4y-6C-SIp"/>
+                        <outlet property="outputButton" destination="VLF-PO-tGp" id="qfh-NQ-RD3"/>
+                        <outlet property="sendWaveFormButton" destination="Spz-iK-Rvh" id="6UM-z4-Z2W"/>
+                        <outlet property="waveFreehandButton" destination="eDJ-8c-jGl" id="rP2-Uk-hbu"/>
+                        <outlet property="waveKindLabel" destination="26x-tm-B7m" id="ob2-D8-buP"/>
+                        <outlet property="waveSawtoothButton" destination="LdE-qm-wm0" id="eGk-E8-OgU"/>
+                        <outlet property="waveScreenParentView" destination="Pza-Md-hBX" id="UJe-M1-zcM"/>
+                        <outlet property="waveScreenView" destination="Pza-Md-hBX" id="4kk-9E-stM"/>
+                        <outlet property="waveSineButton" destination="RbJ-ea-hr8" id="fUG-Wn-xJr"/>
+                        <outlet property="waveSquareButton" destination="Tx0-2i-7TD" id="vSl-ae-r3R"/>
+                        <outlet property="waveTriangleButton" destination="OZF-SD-Arn" id="eVz-WV-Fnh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WSR-uB-A6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="704" y="395"/>
+        </scene>
+        <!--AboutViewController-->
+        <scene sceneID="3ai-Ux-T4L">
+            <objects>
+                <viewController title="AboutViewController" id="agQ-w0-rsJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gBm-vY-UiQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="jPV-HL-Sjp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x8k-07-pxb">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Function Generator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-G8-Peg">
+                                <rect key="frame" x="7" y="0.0" width="179" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SW-1Q-s1L">
+                                <rect key="frame" x="1" y="288" width="32" height="32"/>
+                                <state key="normal" title="return" image="icon_return.png"/>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" modalTransitionStyle="flipHorizontal" id="WIr-Qt-lEt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="for mbed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJp-7A-ASq">
+                                <rect key="frame" x="170" y="0.0" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="これはなんだ？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYZ-4P-vw7">
+                                <rect key="frame" x="7" y="45" width="119" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mbed-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jk0-kc-ZPs">
+                                <rect key="frame" x="356" y="165" width="150" height="48"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wave_sin.png" translatesAutoresizingMaskIntoConstraints="NO" id="sVI-Jz-7iL">
+                                <rect key="frame" x="82" y="85" width="240" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ohneta.net.png" translatesAutoresizingMaskIntoConstraints="NO" id="vol-kM-maW">
+                                <rect key="frame" x="335" y="71" width="130" height="80"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TRv-3E-rxQ"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQs-Qo-D2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013" y="857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="007_00-sync.png" width="40" height="40"/>
+        <image name="008_00-wave_off.png" width="40" height="22"/>
+        <image name="009_00-link.png" width="160" height="160"/>
+        <image name="arrow_down.png" width="40" height="40"/>
+        <image name="arrow_up.png" width="40" height="40"/>
+        <image name="icon_return.png" width="40" height="40"/>
+        <image name="mbed-logo.png" width="150" height="48"/>
+        <image name="ohneta.net.png" width="130" height="80"/>
+        <image name="wave_fre.png" width="242" height="134"/>
+        <image name="wave_saw.png" width="242" height="134"/>
+        <image name="wave_sin.png" width="242" height="134"/>
+        <image name="wave_squ.png" width="242" height="134"/>
+        <image name="wave_tri.png" width="242" height="134"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2da-Xl-qLY"/>
+    </inferredMetricsTieBreakers>
 </document>
