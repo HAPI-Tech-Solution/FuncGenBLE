@@ -12,6 +12,15 @@
 #import "Utils.h"
 
 //----------------------------------------------------------------
+@protocol WaveFormViewFrequencyDelegate <NSObject>
+- (int32_t)requestFrequencyValue;
+
+- (void)changeFrequencyValue:(int32_t)value;
+- (void)didChangeFrequencyValue:(int32_t)value;
+
+@end
+
+//----------------------------------------------------------------
 typedef struct {
 	int		x;		// 範囲 : 0〜WAVE_BUFFER_SIZE
 	double	y;		// 範囲 : -1〜1
@@ -22,12 +31,28 @@ typedef struct {
 	CGPoint			lastTouchPoint;
 	WaveBufferOne	lastOne;
 	
+	int		viewMode;
+	
+	
+	UITapGestureRecognizer			*singleFingerDoubleTapGesture;
+	UIPanGestureRecognizer			*panGesture;
+	UIPinchGestureRecognizer		*pinchGesture;
+	UISwipeGestureRecognizer		*swipeRightGesture;
+	UISwipeGestureRecognizer		*swipeLeftGesture;
+	UISwipeGestureRecognizer		*swipeUpGesture;
+	UISwipeGestureRecognizer		*swipeDownGesture;
+	UIRotationGestureRecognizer		*rotateGesture;
+	UILongPressGestureRecognizer	*longPressGesture;
 }
-
 @property (nonatomic)	double *waveBuffer;
 
 - (void)setWaveBuffer:(double *)buffer;
 - (double *)getWaveBuffer;
 - (void)setWaveFormRect:(CGRect)rect;
+
+
+
+@property (nonatomic, assign) id<WaveFormViewFrequencyDelegate> delegate;
+
 
 @end

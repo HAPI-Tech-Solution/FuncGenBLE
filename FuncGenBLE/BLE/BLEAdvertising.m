@@ -14,7 +14,7 @@
 
 @implementation BLEAdvertising
 
--(id)init
+- (id)init
 {
     self = [super init];
 	{
@@ -31,8 +31,19 @@
     return self;
 }
 
--(void)centralManagerDidUpdateState:(CBCentralManager *)central
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
+}
+
+//----------------------------------------------------------------
+// 強制切断
+- (void)forceDisconnect
+{
+	for (CBPeripheral *peripheral in _peripherals) {
+		if (peripheral.state != CBPeripheralStateDisconnected) {
+			[_centralManager cancelPeripheralConnection:peripheral];
+		}
+	}
 }
 
 //----------------------------------------------------------------
@@ -40,10 +51,9 @@
 /**
  * ペリフェラルのスキャン開始
  */
--(BOOL)scanStart
+- (BOOL)scanStart
 {
 	_isScanning = YES;
-
 	NSLog(@"scanStart _centralManager:state %d", [_centralManager state]);
 
 	if ([_centralManager state] != CBCentralManagerStatePoweredOn)
@@ -65,7 +75,7 @@
 /**
  * ペリフェラルのスキャン停止
  */
--(void)scanStop
+- (void)scanStop
 {
 	_isScanning = NO;
 
@@ -80,18 +90,17 @@
  * ペリフェラルスキャンの結果通知
  */
 
--(void)centralManager:(CBCentralManager *)central
-didDiscoverPeripheral:(CBPeripheral *)peripheral
-	advertisementData:(NSDictionary *)advertisementData
-				 RSSI:(NSNumber *)RSSI
+- (void)centralManager:(CBCentralManager *)central
+ didDiscoverPeripheral:(CBPeripheral *)peripheral
+	 advertisementData:(NSDictionary *)advertisementData
+				  RSSI:(NSNumber *)RSSI
 {
-	//NSString *localName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
 	NSArray *serviceUUIDs = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];	// UUIDの一覧取得
 	NSLog(@"serviceUUIDs: %@", serviceUUIDs.description);
 
 	NSString *my_service_uuid = @"FFFF";	// for DEBUG SERVICE UUID
 	if ([serviceUUIDs containsObject:[CBUUID UUIDWithString:my_service_uuid]]) {
-		// 対象とするサービスが含まれている
+		// 対象とするサービスが含まれている!!
 
 		// ペリフェラルに接続を試みる
 		{
@@ -118,6 +127,7 @@ didDiscoverPeripheral:(CBPeripheral *)peripheral
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
 	NSLog(@"接続失敗");
+
 	//[self scanStart];
 }
 
@@ -125,9 +135,13 @@ didDiscoverPeripheral:(CBPeripheral *)peripheral
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
 	NSLog(@"切断");
-	[self scanStart];
+	if ([_delegate respondsToSelector:@selector(didDisconnectPeripheral:)]) {
+		[_delegate didDisconnectPeripheral:peripheral];
+	}
+
+	//[self scanStart];
 }
 
-//---------------------------
+//----------------------------------------------------------------
 
 @end

@@ -10,7 +10,10 @@
 //---------------------------------------------------------
 
 @protocol BLEAdvertisingDelegate <NSObject>
+
 - (void)didConnectPeripheral:(CBPeripheral *)peripheral;
+- (void)didDisconnectPeripheral:(CBPeripheral *)peripheral;
+
 @end
 
 //---------------------------------------------------------
@@ -20,14 +23,18 @@
 	BLEPeripheralAccess *peripheralAccess;
 }
 
--(id)init;
--(BOOL)scanStart;
--(void)scanStop;
+- (id)init;
+- (BOOL)scanStart;
+- (void)scanStop;
+
+- (void)forceDisconnect;
 
 
 @property (nonatomic, assign) id<BLEAdvertisingDelegate> delegate;
 
-@property BOOL	isScanning;
+@property BOOL	isScanning;			// BLEスキャン中か？
+
+
 @property (strong)	CBCentralManager         *centralManager;
 @property (strong, nonatomic) NSMutableArray *peripherals;
 

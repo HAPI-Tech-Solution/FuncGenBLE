@@ -19,14 +19,24 @@
 	self = [super initWithFrame:frame];
 	if (self) {
 		_waveFormRect = self.frame;		// TODO: これ自身はたぶん一回り大きいので、ちゃんと設定した値を元にすること
+
+		_frequency = WAVE_BUFFER_SIZE;
 	}
 	return self;
 }
 
+/*
 - (void)setWaveFormRect:(CGRect)waveFormRect
 {
 	_waveFormRect = waveFormRect;
 	//[self setNeedsDisplay];
+}
+*/
+
+- (void)setFrequency:(int32_t)frequency
+{
+	_frequency = frequency;
+	[self setNeedsDisplay];
 }
 
 //----------------------------------------------------------------
@@ -37,7 +47,7 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 	
-	NSLog(@"WaveScreenView: drawRect");
+	//NSLog(@"WaveScreenView: drawRect");
 
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
@@ -95,10 +105,30 @@
 			CGContextAddLineToPoint(context,	[self changeX:_waveFormRect.size.width + 8], [self changeY:y]);
 		}
 		
-		// X軸 目盛 (10個)
-		for (int x = 0; x <= WAVE_BUFFER_SIZE; x += (WAVE_BUFFER_SIZE / 10)) {
-			CGContextMoveToPoint(context,    [self changeX:x], [self changeY:1]);
-			CGContextAddLineToPoint(context, [self changeX:x], [self changeY:-1]);
+		// X軸 目盛
+		{
+			// 分割サイズ
+			double divVal = 1.0;
+			if ((1 < _frequency) && (_frequency <= 5000)) {
+				divVal = 1000.0;
+			} else if ((5001 < _frequency) && (_frequency <= 50000)) {
+				divVal = 10000.0;
+			} else if ((50001 < _frequency) && (_frequency <= 500000)) {
+				divVal = 100000.0;
+			} else if ((500001 < _frequency) && (_frequency <= 5000000)) {
+				divVal = 1000000.0;
+			} else if ((5000001 < _frequency) && (_frequency <= 50000000)) {
+				divVal = 10000000.0;
+			}
+			int oneWidth = (int)((double)WAVE_BUFFER_SIZE / 10.0) / ((double)_frequency / divVal);
+			
+			NSLog(@"freq:%d, divVal:%f,  oneWidth: %d", _frequency, divVal, oneWidth);
+			if (oneWidth > 2) {
+				for (int x = 0; x <= WAVE_BUFFER_SIZE; x += oneWidth) {
+			 		CGContextMoveToPoint(context,    [self changeX:x], [self changeY:1]);
+					CGContextAddLineToPoint(context, [self changeX:x], [self changeY:-1]);
+		 		}
+			}
 		}
 	}
 	CGContextStrokePath(context);

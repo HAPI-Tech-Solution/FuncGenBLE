@@ -11,14 +11,15 @@
 
 @class WaveScreenView;
 @class WaveFormView;
-@class FrequencyTuneView;
+@class FrequencyTunePickerView;
 
+//----------------------------------------------------------------
 
 @interface WaveEditViewController : UIViewController
 {
 	FGController	*fgController;
 
-	FrequencyTuneView	*frequencyTuneView;
+	FrequencyTunePickerView		*frequencyTunePickerView;
 	
 	CGRect		waveformScrollRect;
 	CGRect		waveformRect;
@@ -29,9 +30,41 @@
 	
 	UIActivityIndicatorView	*bleAccessActivityIndicatorView;
 	
-	uint32_t		frequency;
+	int32_t		frequency;
 }
 
-//----------------------------------------------------------------
+//-----------------------------
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView;
+
+- (void)updateBleIcons:(BOOL)connect;
+
+- (IBAction)sineWaveButtonHandle:(id)sender;
+- (IBAction)squareButtonHandle:(id)sender;
+- (IBAction)triangeButtonHandle:(id)sender;
+- (IBAction)sawtoothButtonHandle:(id)sender;
+- (IBAction)freehandButtonHandle:(id)sender;
+- (void)replaceBuffer;
+
+- (void)waveBufferClear;
+- (void)makeSineWave;
+- (void)makeSquareWave;
+- (void)makeTriangleWave;
+- (void)makeSawtoothWave;
+
+- (IBAction)connectButtonHandle:(id)sender;
+
+- (IBAction)outputButtonHandle:(id)sender;
+
+- (IBAction)sendButtonHandle:(id)sender;
+
+
+- (IBAction)frequencyUpButtonHandle:(id)sender;
+- (IBAction)frequencyDownButtonHandle:(id)sender;
+- (void)updateFrequency:(BOOL)wantSend;
+
 
 @end
+
+//----------------------------------------------------------------

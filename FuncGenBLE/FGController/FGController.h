@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../BLE/BLEAdvertising.h"
-#import "../BLE/BLEPeripheralAccess.h"
+#import "BLEAdvertising.h"
+#import "BLEPeripheralAccess.h"
 
 //----------------------------------------------------------------
-//#define	WAVE_BUFFER_SIZE		(456 - 20)
 #define	WAVE_BUFFER_SIZE		360
-//#define	WAVE_BUFFER_SIZE		4096
-
+	// 内部波形バッファのサイズ
+#define WAVEFORM_BUFFER_SIZE	360
+	// FuncGenモジュールへの転送用波形バッファのサイズ
 //----------------------------------------------------------------
 
 #define FGC_BUFFERTRANSFER_MAX  16
@@ -25,7 +25,7 @@ typedef enum {
 	FGCommand_Device,				// 出力デバイス選択
 	FGCommand_Output,				// 出力 ON/OFF
 	FGCommand_Frequency,			// 周波数設定
-	FGCommand_WaveformInfo,			// 波形情報
+	FGCommand_WaveformInfo,			// 波形転送情報
 	FGCommand_WaveformBlock,		// 波形転送ブロック
 	FGCommand_WaveformToBuffer,		// 波形転送完了
 	
@@ -138,14 +138,24 @@ typedef struct {
 
 //----------------------------------------------------------------
 
+@protocol FGControllerDelegate <NSObject>
+- (void)didFGConnect;
+- (void)didFGDisconnect;
+
+- (void)didFGBeginCommandSend;
+- (void)didFGEndCommandSend;
+@end
+
+
 @interface FGController : NSObject <BLEAdvertisingDelegate, BLEPeripheralAccessDelegate>
 {
 	BLEAdvertising		*bleAdvertising;
 	BLEPeripheralAccess	*blePeripheralAccess;
 
 }
+@property (nonatomic, assign) id<FGControllerDelegate> delegate;
 
-@property (strong)		NSMutableDictionary		*characteristicDic;		// value=CBCharacteristic
+@property (strong)	NSMutableDictionary		*characteristicDic;		// value=CBCharacteristic
 
 
 //- (void)init;
@@ -154,18 +164,20 @@ typedef struct {
 - (void)peripheralScanStart;
 - (void)peripheralScanStop;
 
-- (void)connect;
-- (void)disconnect;
+- (void)forceDisconnect;
 - (BOOL)isConnected;
 
 - (void)setWaveForm:(double *)waveBuffer;
 - (double *)getWaveForm;
 
+- (void)beginCommand:(enumFGCommand)fgCommand;
+- (void)endCommand:(enumFGCommand)fgCommand;
+
 - (void)setDevice:(int)deviceId;
 - (void)setOutput:(BOOL)using;
 
 - (void)transferWaveBuffer;
-- (void)frequencey:(UInt32)freq;
+- (void)setFrequencey:(UInt32)freq;
 - (void)reset;
 
 - (int)getDevice;

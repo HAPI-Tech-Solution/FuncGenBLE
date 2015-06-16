@@ -7,15 +7,15 @@
 //
 
 #import "WaveEditViewController.h"
-#import "WaveFromViews/WaveScreenView.h"
-#import "FrequencyTuneView.h"
+#import "WaveFormView.h"
+#import "WaveScreenView.h"
 
 double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 
 //----------------------------------------------------------------
 
 
-@interface WaveEditViewController () <UIScrollViewDelegate, FrequencyTuneViewDelegate>
+@interface WaveEditViewController () <UIScrollViewDelegate, FGControllerDelegate, WaveFormViewFrequencyDelegate>
 	//<UIPickerViewDelegate, UIPickerViewDataSource, BLEAdvertisingDelegate, BLEPeripheralAccessDelegate>
 //
 @property (weak, nonatomic) IBOutlet UIButton *waveSineButton;
@@ -28,14 +28,18 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 //@property (weak, nonatomic) IBOutlet UISlider *waveScaleSlider;
 
 //
-@property (weak, nonatomic) IBOutlet UIButton *sendWaveFormButton;
+@property (weak, nonatomic) IBOutlet UIButton *connectButton;
 @property (weak, nonatomic) IBOutlet UIButton *outputButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendWaveFormButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *waveKindLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *frequencyLabel;
 @property (weak, nonatomic) IBOutlet UIButton *frequencyUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *frequencyDownButton;
+
+
+@property (strong, nonatomic) IBOutlet UIView *pageReturnButton;
 
 @end
 
@@ -57,7 +61,8 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 	}
 	
 	fgController = [[FGController alloc] init];
-	[fgController peripheralScanStart];
+	fgController.delegate = self;
+	//[fgController peripheralScanStart];
 	
 	// 波形フォーム設定
 	{
@@ -71,7 +76,7 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 		waveScreenView = [[WaveScreenView alloc] initWithFrame:wspvFrame];
 		{
 			waveScreenView.backgroundColor = [UIColor blackColor];
-			waveScreenView.userInteractionEnabled = NO;
+			//waveScreenView.userInteractionEnabled = NO;
 		}
 		[_waveScreenParentView addSubview:waveScreenView];
 
@@ -106,34 +111,29 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 	
 	// 周波数表示
 	{
-		[self updateFrequency];
-		
-		// 周波数設定ポップアップview
-		frequencyTuneView = [[FrequencyTuneView alloc] initWithFrame:CGRectMake(100, 100, 180, 164)];
-		{
-			//frequencyTuneView.backgroundColor = [UIColor whiteColor];
-			frequencyTuneView.hidden = YES;
-			frequencyTuneView.delegate = self;
-			frequencyTuneView.frequency = frequency;
-		}
-		[self.view addSubview:frequencyTuneView];
-		[self.view bringSubviewToFront:frequencyTuneView];
-		
+		[self updateFrequency:YES];
+		waveFormView.delegate = self;
 	}
 	
 	// ボタン類
 	{
-		[_outputButton setImage:[UIImage imageNamed:@"008_00-wave_on"] forState:UIControlStateNormal];
+		[self sineWaveButtonHandle:_waveSineButton];	// 波形初期化 - sine wave
 		
+		_outputButton.tag = 1;
+		[_outputButton setImage:[UIImage imageNamed:@"008_00-wave_on"] forState:UIControlStateNormal];
+
+		[self updateBleIcons:NO];
 	}
 
-	
+
+	// アクティビティインジケータ表示用view
 	bleAccessActivityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:self.view.frame];
 	{
 		bleAccessActivityIndicatorView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.6];
 		bleAccessActivityIndicatorView.hidden = YES;
 	}
 	[self.view addSubview:bleAccessActivityIndicatorView];
+	[self.view sendSubviewToBack:bleAccessActivityIndicatorView];
 	
 }
 
@@ -142,17 +142,23 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+	
 
-// 
+	if ([[segue identifier] isEqualToString:@"return"]) {
+		[fgController forceDisconnect];		// ページから離れる場合は強制的にBLEを開放
+	}
+	
+}
+
+
+//----------------------------------------------------------------
+//
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	
@@ -162,32 +168,62 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 	
 }
 
-//----------------------------------------------------------------
-/*
-- (IBAction)waveScaleSliderHandle:(id)sender {
-	
-	float val = _waveScaleSlider.value;
-	//NSLog(@"waveScaleSlider: %f", val);
-	
-	CGRect f = waveScreenView.frame;
-	f.size.width = (CGFloat)WAVE_BUFFER_SIZE * val;
-	[waveScreenView setWaveFormRect:f];
-	[waveScreenView setNeedsDisplay];
 
-	f = waveFormView.frame;
-	f.size.width = (CGFloat)WAVE_BUFFER_SIZE * val;
-	[waveFormView setWaveFormRect:f];
-	[waveFormView setNeedsDisplay];
-		
+
+//----------------------------------------------------------------
+#pragma mark - BLE connection
+// FGControllerDelegate
+- (void)didFGConnect
+{
+	[self updateBleIcons:YES];
 }
-*/
+
+- (void)didFGDisconnect
+{
+	[self updateBleIcons:NO];
+}
+
+- (void)updateBleIcons:(BOOL)connect
+{
+	if (connect) {
+		[_connectButton setImage:[UIImage imageNamed:@"009_00-link.png"] forState:UIControlStateNormal];
+
+		_outputButton.enabled = YES;
+		_sendWaveFormButton.enabled = YES;
+		
+		_frequencyLabel.enabled = YES;
+		_frequencyUpButton.enabled = YES;
+		_frequencyDownButton.enabled = YES;
+		
+	} else {
+		[_connectButton setImage:[UIImage imageNamed:@"009_01-link.png"] forState:UIControlStateNormal];
+
+		_outputButton.enabled = NO;
+		_sendWaveFormButton.enabled = NO;
+
+		_frequencyLabel.enabled = NO;
+		_frequencyUpButton.enabled = NO;
+		_frequencyDownButton.enabled = NO;
+	}
+}
 
 //----------------------------------------------------------------
 //----------------------------------------------------------------
 #pragma mark - 波形選択ボタンハンドル
 
+- (void)clearWaveButtonsStatus
+{
+	_waveSineButton.enabled = YES;
+	_waveSquareButton.enabled = YES;
+	_waveTriangleButton.enabled = YES;
+	_waveSawtoothButton.enabled = YES;
+	_waveFreehandButton.enabled = YES;
+}
+
 - (IBAction)sineWaveButtonHandle:(id)sender {
-	waveScreenView.userInteractionEnabled = NO;
+	//waveScreenView.userInteractionEnabled = NO;
+	[self clearWaveButtonsStatus];
+	_waveSineButton.enabled = NO;
 
 	[self makeSineWave];
 	_waveKindLabel.text = [Utils waveKindString:WaveKind_Sine];
@@ -195,7 +231,9 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 }
 
 - (IBAction)squareButtonHandle:(id)sender {
-	waveScreenView.userInteractionEnabled = NO;
+	//waveScreenView.userInteractionEnabled = NO;
+	[self clearWaveButtonsStatus];
+	_waveSquareButton.enabled = NO;
 
 	[self makeSquareWave];
 	_waveKindLabel.text = [Utils waveKindString:WaveKind_Square];
@@ -203,7 +241,9 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 }
 
 - (IBAction)triangeButtonHandle:(id)sender {
-	waveScreenView.userInteractionEnabled = NO;
+	//waveScreenView.userInteractionEnabled = NO;
+	[self clearWaveButtonsStatus];
+	_waveTriangleButton.enabled = NO;
 
 	[self makeTriangleWave];
 	_waveKindLabel.text = [Utils waveKindString:WaveKind_Triangle];
@@ -211,7 +251,9 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 }
 
 - (IBAction)sawtoothButtonHandle:(id)sender {
-	waveScreenView.userInteractionEnabled = NO;
+	//waveScreenView.userInteractionEnabled = NO;
+	[self clearWaveButtonsStatus];
+	_waveSawtoothButton.enabled = NO;
 
 	[self makeSawtoothWave];
 	_waveKindLabel.text = [Utils waveKindString:WaveKind_Sawtooth];
@@ -219,7 +261,9 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 }
 
 - (IBAction)freehandButtonHandle:(id)sender {
-	waveScreenView.userInteractionEnabled = YES;
+	//waveScreenView.userInteractionEnabled = YES;
+	[self clearWaveButtonsStatus];
+	_waveFreehandButton.enabled = NO;
 
 	// 現在のwaveを利用
 	_waveKindLabel.text = [Utils waveKindString:WaveKind_Freehand];
@@ -272,9 +316,9 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 	
 	gWaveBuffer[0] = y;
 	for (int x = 1; x < WAVE_BUFFER_SIZE; x++) {
-		if (x < (WAVE_BUFFER_SIZE / 4)) {				// 角度換算 = 0 - 90
+		if (x <= (WAVE_BUFFER_SIZE / 4)) {				// 角度換算 = 0 - 90
 			y += yPerOne;
-		} else if (x < (WAVE_BUFFER_SIZE * 3 / 4)) {	// 角度換算 = 90 -270
+		} else if (x <= (WAVE_BUFFER_SIZE * 3 / 4)) {	// 角度換算 = 90 - 270
 			y -= yPerOne;
 		} else {										// 角度換算 = 270 - 360
 			y += yPerOne;
@@ -299,22 +343,29 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 }
 
 //----------------------------------------------------------------
+//----------------------------------------------------------------
 #pragma mark - FuncGen操作ボタンハンドル
+
 /**
  */
-- (IBAction)sendButtonHandle:(id)sender
+- (IBAction)connectButtonHandle:(id)sender
 {
-	dispatch_async(dispatch_get_main_queue(), ^{
-		bleAccessActivityIndicatorView.hidden = NO;
-		[bleAccessActivityIndicatorView startAnimating];
-
-		[fgController transferWaveBuffer];
-
-		[bleAccessActivityIndicatorView stopAnimating];
-		bleAccessActivityIndicatorView.hidden = YES;
-	});
+	if ([fgController isConnected]) {	// 接続済みの場合...
+		// 接続を解除
+		[fgController forceDisconnect];
+		[_connectButton setImage:[UIImage imageNamed:@"009_00-link"] forState:UIControlStateNormal];
+		
+	} else {							// 未接続の場合...
+		// ペリフェラルスキャンして接続を試みる
+		[fgController peripheralScanStart];
+		//[_connectButton setImage:[UIImage imageNamed:@"009_01-link"] forState:UIControlStateNormal];
+	}
+	
 }
 
+
+/**
+ */
 - (IBAction)outputButtonHandle:(id)sender
 {
 	if (_outputButton.tag == 0) {
@@ -322,14 +373,35 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
 		_outputButton.tag = 1;
 		//[_outputButton setTitle:@"OFF" forState:UIControlStateNormal];
 		[_outputButton setImage:[UIImage imageNamed:@"008_00-wave_on"] forState:UIControlStateNormal];
-
+		
 	} else {
 		[fgController setOutput:NO];
 		_outputButton.tag = 0;
 		//[_outputButton setTitle:@"ON" forState:UIControlStateNormal];
 		[_outputButton setImage:[UIImage imageNamed:@"008_00-wave_off"] forState:UIControlStateNormal];
-
+		
 	}
+}
+
+/**
+ */
+- (IBAction)sendButtonHandle:(id)sender
+{
+	bleAccessActivityIndicatorView.hidden = NO;
+	[self.view bringSubviewToFront:bleAccessActivityIndicatorView];
+	[bleAccessActivityIndicatorView startAnimating];
+
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[fgController setOutput:NO];			// 出力停止
+		[fgController transferWaveBuffer];		// 波形データ転送
+		[fgController setFrequencey:frequency];	// 周波数更新
+		[fgController setOutput:YES];			// 出力開始
+
+		[bleAccessActivityIndicatorView stopAnimating];
+		bleAccessActivityIndicatorView.hidden = YES;
+		[self.view sendSubviewToBack:bleAccessActivityIndicatorView];
+	});
+
 }
 
 //----------------------------------------------------------------
@@ -337,49 +409,72 @@ double	gWaveBuffer[WAVE_BUFFER_SIZE];		// val=-1〜1
  */
 #pragma mark - 周波数変更
 
-#define FUNCGEN_MIN_FREQUENCY	10
-#define FUNCGEN_MAX_FREQUENCY	(100 * 1000)
+#define FUNCGEN_MIN_FREQUENCY	(366 / 2 + 1)
+#define FUNCGEN_MAX_FREQUENCY	(3 * 1000 * 1000)
 
-// for FrequencyTuneViewDelegate
-- (void)didChangeValue:(int32_t)value
+// for WaveFormViewFrequencyDelegate
+- (int32_t)requestFrequencyValue
 {
+	return frequency;
+}
+
+- (void)changeFrequencyValue:(int32_t)value
+{
+	if (value <= FUNCGEN_MIN_FREQUENCY) {
+		value = FUNCGEN_MIN_FREQUENCY;
+	} else if (value >= FUNCGEN_MAX_FREQUENCY) {
+		value = FUNCGEN_MAX_FREQUENCY;
+	}
+	
 	frequency = value;
-	[self updateFrequency];
+	[self updateFrequency:NO];
 }
 
-- (void)didClose
+- (void)didChangeFrequencyValue:(int32_t)value
 {
-	frequencyTuneView.hidden = YES;
-	[self.view sendSubviewToBack:frequencyTuneView];
+	if (value <= FUNCGEN_MIN_FREQUENCY) {
+		value = FUNCGEN_MIN_FREQUENCY;
+	} else if (value >= FUNCGEN_MAX_FREQUENCY) {
+		value = FUNCGEN_MAX_FREQUENCY;
+	}
+	
+	frequency = value;
+	[self updateFrequency:YES];
 }
-
 
 - (IBAction)frequencyUpButtonHandle:(id)sender {
 	frequency++;
-	[self updateFrequency];
+	[self updateFrequency:YES];
 }
 
 - (IBAction)frequencyDownButtonHandle:(id)sender {
 	frequency--;
-	[self updateFrequency];
+	[self updateFrequency:YES];
 }
 
-- (IBAction)frequencyTapButtonHandle:(id)sender {
-	// 周波数表示エリアの直上に貼ってあるUIButtonがタップされた
-	frequencyTuneView.hidden = NO;
-	[self.view bringSubviewToFront:frequencyTuneView];
-
-}
-
-- (void)updateFrequency
+- (void)updateFrequency:(BOOL)wantSend
 {
-	//_frequencyLabel.text = [NSString stringWithFormat:@"%d", frequency];
-
 	NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
 	[format setNumberStyle:NSNumberFormatterDecimalStyle];
 	[format setGroupingSeparator:@","];
 	[format setGroupingSize:3];
-	_frequencyLabel.text = [format stringForObjectValue:[NSNumber numberWithInt:frequency]];	
+	_frequencyLabel.text = [format stringForObjectValue:[NSNumber numberWithInt:frequency]];
+	
+	
+	waveScreenView.frequency = frequency;
+	
+	if (fgController.isConnected) {
+		if (wantSend) {
+			[fgController setFrequencey:frequency];
+		} else {
+			static int mabiki_count = 0;
+			if (mabiki_count > 3) {		// とりあえず3回に
+				[fgController setFrequencey:frequency];
+				mabiki_count = 0;
+			}
+			mabiki_count++;
+		}
+	}
 }
 
 
